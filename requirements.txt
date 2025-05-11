@@ -1,0 +1,9 @@
+torch
+pandas
+transformers
+sentencepiece
+tqdm
+PyYAML
+python-dotenv
+git+https://github.com/KellerJordan/Muon.git#egg=muon-optimizer
+flash-attn
