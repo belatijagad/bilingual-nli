@@ -12,4 +12,4 @@ packaging
 wandb
 huggingface-hub
 muon_optimizer
-https://github.com/mjun0812/flash-attention-prebuild-wheels/releases/download/v0.0.5/flash_attn-2.7.4.post1+cu124torch2.6-cp311-cp311-linux_x86_64.whl
+https://github.com/mjun0812/flash-attention-prebuild-wheels/releases/download/v0.0.5/flash_attn-2.7.4.post1+cu124torch2.6-cp310-cp310-linux_x86_64.whl
