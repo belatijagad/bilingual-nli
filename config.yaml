@@ -1,38 +1,49 @@
 data:
-  train_path: "/kaggle/input/deeplearning-translated-processed-nli-data/processed_translated_train.csv"
-  raw_statement1_col: "final_statement_1"
-  raw_statement2_col: "final_statement_2"
-  raw_label_col: "label"
-  statement1_col: "statement_1"
-  statement2_col: "statement_2"
-  label_col: "label"
+  train_path: "/kaggle/input/deeplearning-translated-processed-nli-data/processed_translated_train.csv" #
+  raw_statement1_col: "final_statement_1" #
+  raw_statement2_col: "final_statement_2" #
+  raw_label_col: "label" #
+  statement1_col: "statement_1" #
+  statement2_col: "statement_2" #
+  label_col: "label" #
 
 model:
-  checkpoint: "cross-encoder/nli-deberta-v3-base"
-  num_labels: 3
-  label_names: ["e", "n", "c"]
+  checkpoint: "cross-encoder/nli-deberta-v3-base" #
+  num_labels: 3 #
+  label_names: ["e", "n", "c"] #
 
 tokenizer:
-  max_length: 64
+  max_length: 64 #
 
 training:
-  output_dir: "./trained_model"
-  logging_dir: "./training_log"
-  num_train_epochs: 3
-  per_device_train_batch_size: 32
-  per_device_eval_batch_size: 32
-  learning_rate: 0.00002
-  weight_decay: 0.01
-  save_strategy: "epoch"
-  logging_steps: 100
-  metric_for_best_model: "accuracy"
-  report_to: ["wandb", "tensorboard"]
+  output_dir: "./trained_model" #
+  logging_dir: "./training_log" #
+  num_train_epochs: 3 #
+  per_device_train_batch_size: 32 #
+  per_device_eval_batch_size: 32 #
+  learning_rate: 0.00002 #
+  weight_decay: 0.01 #
+  report_to: ["wandb", "tensorboard"] #
+  # New options
+  validation_split_size: 0.1
+  csv_log_path: "./training_log/training_history.csv"
+  # Options for custom training loop
+  use_muon: true
+  use_fused_adamw: true
+  use_torch_compile: true
+  learning_rate_muon: 0.01
+  muon_momentum: 0.9
+  learning_rate_adamw: 0.00002
+  adamw_betas_0: 0.9
+  adamw_betas_1: 0.999
+  adamw_weight_decay: 0.01
+
 
 hub:
-  push_to_hub: true
-  model_id: "belatijagad/dl-nli"
-  strategy: "every_save"
+  push_to_hub: true #
+  model_id: "belatijagad/dl-nli" #
+  strategy: "every_save" #
 
 wandb:
-  project: "DL-NLI"
-  reinit: true
+  project: "DL-NLI" #
+  reinit: true #
